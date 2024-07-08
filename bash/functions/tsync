@@ -1,0 +1,27 @@
+#----------------------------------------------
+# Function to sync files to multiple hosts
+#-----------------------------------------------
+tsync() {
+    local FILES_TO_SYNC=(
+        "~/bash"
+        "~/.ssh"
+    )
+    local HOSTS=("wsl" "chrome" "master" "server")
+
+    sync_to_host() {
+        local host=$1
+        for item in "${FILES_TO_SYNC[@]}"; do
+            local expanded_item=$(eval echo $item)
+            echo "Syncing $expanded_item to $host:~"
+            rsync -avz --progress "$expanded_item" "$host:~/"
+        done
+    }
+
+    for host in "${HOSTS[@]}"; do
+        echo "Starting sync for host: $host"
+        sync_to_host $host
+        echo "Completed sync for host: $host"
+    done
+
+    echo "All hosts have been synced."
+}

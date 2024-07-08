@@ -1,0 +1,109 @@
+# Define PS1 options
+PS1_OPTIONS=(
+  '\[\033[01;67m\]\T \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+  '\[\033[01;31m\]\T \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+  '\[\033[01;36m\]\T \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+  '\[\033[01;33m\]\T \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+  '\[\e[38;5;208m\]\T \[\e[38;5;118m\]\u@\h:\[\e[38;5;45m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;201m\]\T \[\e[38;5;190m\]\u@\h:\[\e[38;5;51m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;83m\]\T \[\e[38;5;226m\]\u@\h:\[\e[38;5;27m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;166m\]\T \[\e[38;5;141m\]\u@\h:\[\e[38;5;121m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;220m\]\T \[\e[38;5;162m\]\u@\h:\[\e[38;5;93m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;214m\]\T \[\e[38;5;171m\]\u@\h:\[\e[38;5;196m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;203m\]\T \[\e[38;5;129m\]\u@\h:\[\e[38;5;45m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;226m\]\T \[\e[38;5;118m\]\u@\h:\[\e[38;5;196m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;171m\]\T \[\e[38;5;82m\]\u@\h:\[\e[38;5;39m\]\W\[\e[0m\]\$ '
+  '\[\e[38;5;196m\]\T \[\e[38;5;226m\]\u@\h:\[\e[38;5;208m\]\W\[\e[0m\]\$ '
+)
+
+# Define a function to select and set PS1
+ttcol() {
+  local mode=$1
+
+  case $mode in
+    r)
+      # Randomly pick a PS1 from the list and set it as the default
+      PS1=${PS1_OPTIONS[$((RANDOM % ${#PS1_OPTIONS[@]}))]}
+      echo "export PS1='$PS1'" > ~/bash/.bash_ps1
+      source ~/bash/.bash_ps1
+      ;;
+    [1-9]|1[0-4])
+      # Set the PS1 to the specified option in the list
+      PS1=${PS1_OPTIONS[$((mode - 1))]}
+      echo "export PS1='$PS1'" > ~/bash/.bash_ps1
+      source ~/bash/.bash_ps1
+      ;;
+    mode)
+      local submode=$2
+      local current_ps1=$(cat ~/bash/.bash_ps1 | sed 's/export PS1=//g' | tr -d "'")
+
+      # Extract the current PS1 parts
+      local time_part=$(echo $current_ps1 | grep -oP '\\\[.*?m\\\]T')
+      local user_part=$(echo $current_ps1 | grep -oP '\\\[.*?m\\\]\u@\h')
+      local dir_part=$(echo $current_ps1 | grep -oP '\\\[.*?m\\\]\W')
+
+      # Update the PS1 based on the submode selected
+      case $submode in
+        1)
+          # Pick a random color for the first portion (time)
+          local color1=$((RANDOM % 256))
+          time_part='\[\e[38;5;'${color1}'m\]\T'
+          ;;
+        2)
+          # Pick a random color for the middle portion (user@machine:)
+          local color2=$((RANDOM % 256))
+          user_part='\[\e[38;5;'${color2}'m\]\u@\h'
+          ;;
+        3)
+          # Pick a random color for the third part (working dir)
+          local color3=$((RANDOM % 256))
+          dir_part='\[\e[38;5;'${color3}'m\]\W'
+          ;;
+        *)
+          echo "Invalid mode option. Use 1, 2, or 3."
+          return 1
+          ;;
+      esac
+
+      # Construct the new PS1
+      PS1="${time_part} ${user_part}:${dir_part}\[\e[0m\]\$ "
+      echo "export PS1='$PS1'" > ~/bash/.bash_ps1
+      source ~/bash/.bash_ps1
+      ;;
+    random)
+      local setting=$2
+      if [ "$setting" == "on" ]; then
+        echo "export RANDOM_PS1=1" > ~/bash/.random_ps1
+      elif [ "$setting" == "off" ]; then
+        echo "export RANDOM_PS1=0" > ~/bash/.random_ps1
+      else
+        echo "Invalid option for random. Use 'on' or 'off'."
+        return 1
+      fi
+      ;;
+    d)
+      # Reset to the default PS1
+      PS1='\[\033[01;67m\]\T \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+      echo "export PS1='$PS1'" > ~/bash/.bash_ps1
+      source ~/bash/.bash_ps1
+      ;;
+    *)
+      echo "Invalid option. Use 'r' for random, a number (1-14) to select a specific PS1, 'mode' followed by 1, 2, or 3 to change specific parts of the PS1, 'random' followed by 'on' or 'off' to enable/disable random PS1, or 'd' to reset to the default."
+      return 1
+      ;;
+  esac
+}
+
+# Load the saved PS1 or set a random one if RANDOM_PS1 is enabled
+if [ -f ~/bash/.random_ps1 ]; then
+  source ~/bash/.random_ps1
+  if [ "$RANDOM_PS1" == "1" ]; then
+    PS1=${PS1_OPTIONS[$((RANDOM % ${#PS1_OPTIONS[@]}))]}
+  elif [ -f ~/bash/.bash_ps1 ]; then
+    source ~/bash/.bash_ps1
+  fi
+else
+  if [ -f ~/bash/.bash_ps1 ]; then
+    source ~/bash/.bash_ps1
+  fi
+fi

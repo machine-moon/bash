@@ -1,0 +1,62 @@
+#----------------------------------------------
+# Function to automatically add all SSH keys to ssh-agent
+#-----------------------------------------------
+ttssh() {
+    # Prompt for the passphrase once
+    echo "Enter passphrase for your SSH keys:"
+    read -s PASSPHRASE
+
+    # Create a temporary expect script
+    EXPECT_SCRIPT=$(mktemp /tmp/add_ssh_key.exp.XXXXXX)
+
+    cat <<EOF > $EXPECT_SCRIPT
+#!/usr/bin/expect -f
+
+# Function to add a key using expect
+proc add_key {key passphrase} {
+    spawn ssh-add \$key
+    expect "Enter passphrase for *" {
+        send "\$passphrase\r"
+        expect {
+            "Identity added" {
+                return 0
+            }
+            "Bad passphrase" {
+                return 1
+            }
+        }
+    }
+}
+
+# Loop through keys passed as arguments
+set passphrase [lindex \$argv 0]
+for {set i 1} {\$i < [llength \$argv]} {incr i} {
+    set key [lindex \$argv \$i]
+    if {[add_key \$key \$passphrase] != 0} {
+        puts "Failed to add key: \$key"
+    } else {
+        puts "Successfully added key: \$key"
+    }
+}
+EOF
+
+    # Make the expect script executable
+    chmod +x $EXPECT_SCRIPT
+
+    # Find all SSH keys in the default .ssh directory
+    SSH_KEY_FILES=$(find ~/.ssh -type f -name 'id_*' ! -name '*.pub' ! -name 'known_hosts')
+
+    # Start the ssh-agent if not already running
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        eval "$(ssh-agent -s)"
+    fi
+
+    # Call the expect script with the passphrase and all SSH keys
+    $EXPECT_SCRIPT "$PASSPHRASE" $SSH_KEY_FILES
+
+    # Clean up
+    rm -f $EXPECT_SCRIPT
+
+    # Unset the passphrase variable for security
+    unset PASSPHRASE
+}

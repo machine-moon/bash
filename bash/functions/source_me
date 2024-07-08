@@ -1,0 +1,17 @@
+#-----------------------------
+# Function to source bash dir
+#-----------------------------
+source_me() {
+    local dir="$1"
+    if [ -d "$dir" ]; then
+        for file in "$dir"/*; do
+            if [ -f "$file" ]; then
+                # echo "Sourcing $file"
+                . "$file"
+            fi
+        done
+    fi
+}
+
+# source_me "$HOME/bash"
+# source_me "$HOME/bash/functions"
