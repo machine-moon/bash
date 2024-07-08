@@ -1,7 +1,10 @@
 #----------------------------------------------
 # Function to sync files to multiple hosts
 #-----------------------------------------------
-tsync() {
+
+
+
+old_tsync() {
     # exit, in memory of this fallen function
     echo "This function has been deprecated. Please use the new git clone method."
     return
