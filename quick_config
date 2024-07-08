@@ -1,1 +1,2 @@
-git config --global alias.quickpush '!git add -A && git commit -m "Quick commit" && git push origin master'
+git config --global alias.tpush '!git add -A && git commit -m "Quick commit" && git push origin master'
+
