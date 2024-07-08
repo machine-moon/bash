@@ -1,7 +1,27 @@
 #----------------------------------------------
 # Function to sync files to multiple hosts
 #-----------------------------------------------
+tsync() {
+    # Run the custom git push command
+    git -C ~/bash/ tpush
+    
+    # Define the sync targets
+    local SYNC_TARGETS=("wsl" "chrome" "master" "server")
 
+    # Function to perform git pull on each target
+    sync_to_host() {
+        local host=$1
+        echo "Syncing with $host"
+        ssh "$host" git -C ~/bash/ pull
+    }
+
+    # Loop through each sync target and execute the sync
+    for target in "${SYNC_TARGETS[@]}"; do
+        sync_to_host "$target"
+    done
+
+    echo "All hosts have been synced."
+}
 
 
 old_tsync() {
