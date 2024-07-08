@@ -5,19 +5,21 @@ tsync() {
     # Run the custom git push command
     git -C ~/bash/ tpush
     
-    # Define the sync targets
+    # Define the sync targets and corresponding users
     local SYNC_TARGETS=("wsl" "chrome" "master" "server")
+    local USERS=("candy" "orion" "master" "server") # Replace these with actual usernames
 
     # Function to perform git pull on each target
     sync_to_host() {
         local host=$1
-        echo "Syncing with $host"
-        ssh "$host" git -C ~/bash/ pull
+        local user=$2
+        echo "Syncing with $host as $user"
+        ssh "$user@$host" git -C /home/"$user"/bash/ pull
     }
 
     # Loop through each sync target and execute the sync
-    for target in "${SYNC_TARGETS[@]}"; do
-        sync_to_host "$target"
+    for i in "${!SYNC_TARGETS[@]}"; do
+        sync_to_host "${SYNC_TARGETS[$i]}" "${USERS[$i]}"
     done
 
     echo "All hosts have been synced."
