@@ -8,7 +8,7 @@ tsync() {
     
     # Define the sync targets and corresponding users
     local SYNC_TARGETS=("wsl" "chrome" "master" "server")
-    local USERS=("candy" "orion" "master" "server") # Replace these with actual usernames
+    local USERS=("candy" "orion" "master" "titan") # Replace these with actual usernames
 
     # Function to perform git pull on each target
     sync_to_host() {
