@@ -2,7 +2,8 @@
 # Function to sync files to multiple hosts
 #-----------------------------------------------
 tsync() {
-    # Run the custom git push command
+   tssh
+   # Run the custom git push command
     git -C ~/bash/ tpush
     
     # Define the sync targets and corresponding users
