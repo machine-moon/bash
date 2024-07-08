@@ -2,6 +2,9 @@
 # Function to sync files to multiple hosts
 #-----------------------------------------------
 tsync() {
+    # exit, in memory of this fallen function
+    echo "This function has been deprecated. Please use the new git clone method."
+    return
     local FILES_TO_SYNC=(
         "~/bash"
         "~/.ssh"
