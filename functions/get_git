@@ -1,0 +1,22 @@
+# Initialize ENABLE_GIT_BANCH
+# ENABLE_GIT_BRANCH=1  # Default to enabled || check exports folder for variables
+get_git_branch() {
+  # Display the branch if ENABLE_GIT_BRANCH is 1
+  if [ "$ENABLE_GIT_BRANCH" = "1" ]; then
+    branch=$(git branch 2>/dev/null | grep '*' | sed 's/* //')
+    if [ -n "$branch" ]; then
+      echo -e "\033[01;36m($branch) \033[00m"
+    fi
+  fi
+}
+
+
+toggle_git_branch() {
+  if [ "$ENABLE_GIT_BRANCH" = "1" ]; then
+    export ENABLE_GIT_BRANCH=0
+    echo "Git branch display is OFF"
+  else
+    export ENABLE_GIT_BRANCH=1
+    echo "Git branch display is ON"
+  fi
+}
