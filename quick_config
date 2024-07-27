@@ -1,2 +1,2 @@
-git config --global alias.tpush '!git add -A && git commit -m "Quick commit" && git push origin master'
+git config --global alias.tpush '!git add -A && git commit -m "an automated quick commit and push (tpush)" && git push origin master'
 
