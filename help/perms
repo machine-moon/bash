@@ -1,0 +1,9 @@
+
+sudo chown -R root:root /home/library
+sudo chmod -R 777 /home/library
+
+sudo setfacl -R -m d:u::rwx /home/library
+sudo setfacl -R -m d:g::rwx /home/library
+sudo setfacl -R -m d:o::rwx /home/library
+
+
