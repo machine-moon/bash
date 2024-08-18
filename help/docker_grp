@@ -1,0 +1,2 @@
+sudo usermod -aG docker <user_name>
+sudo systemctl restart docker
