@@ -44,7 +44,7 @@ EOF
     chmod +x $EXPECT_SCRIPT
 
     # Find all SSH keys in the default .ssh directory
-    SSH_KEY_FILES=$(find /root/.ssh -type f -name 'id_*' ! -name '*.pub' ! -name 'known_hosts')
+    SSH_KEY_FILES=$(find ~/.ssh -type f -name 'id_*' ! -name '*.pub' ! -name 'known_hosts')
 
     # Start the ssh-agent if not already running
     if [ -z "$SSH_AUTH_SOCK" ]; then
