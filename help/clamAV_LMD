@@ -1,0 +1,36 @@
+# remember.txt
+
+1. Installed Utilities
+======================
+ClamAV (Antivirus)
+-------------------
+- Scan Command:
+  sudo clamscan -r / --log=/var/log/clamav/clamav-scan.log
+- Log File: /var/log/clamav/clamav-scan.log
+
+Linux Malware Detect (LMD)
+---------------------------
+- Scan Command:
+  sudo maldet --scan-all /
+- Report Command:
+  sudo maldet --report
+
+2. Custom Scan Script
+======================
+- Script Name: scan_system.sh
+- Location: /usr/local/bin/scan_system.sh
+- Run Manually:
+  sudo /usr/local/bin/scan_system.sh
+
+3. Scheduled Cron Job
+======================
+- Runs every 2 days at 2 AM
+- Cron Job Command to Edit:
+  sudo crontab -e
+- Cron Job Entry to Add:
+  0 2 */2 * * /usr/local/bin/scan_system.sh
+
+4. Key Commands
+===============
+- Update ClamAV:
+  sudo freshclam
