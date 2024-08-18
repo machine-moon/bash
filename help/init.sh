@@ -15,8 +15,8 @@ source_me() {
     fi
 }
 
-source_me \"\$HOME/tbash\"
-source_me \"\$HOME/tbash/functions\"
+source_me \"\$HOME/bash\"
+source_me \"\$HOME/bash/functions\"
 "
 
 # Append the text to ~/.bashrc
