@@ -1,0 +1,19 @@
+[user]
+	name = t4r3k
+	email = 142579274+machine-moon@users.noreply.github.com
+[color]
+	ui = auto
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = master
+[safe]
+	directory = /home/library/workspace/mlos
+	directory = /home/library/workspace/
+	directory = /home/library/workspace/cadmium/cadmium2_testing_framework
+	directory = /home/library/workspace/cadmium/cadmium2_testing_framework_
+	directory = /home/library/workspace/mlos/.git
+[alias]
+	tpush = !git add -A && git commit -m \"an automated quick commit and push (tpush)\" && git push origin master
