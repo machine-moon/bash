@@ -25,3 +25,6 @@ echo "$TEXT_TO_APPEND" >> ~/.bashrc
 # Optional: Inform the user
 echo "The function source_me has been appended to ~/.bashrc."
 
+clear
+source ~/.bashrc
+echo "t init complete"
