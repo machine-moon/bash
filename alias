@@ -2,7 +2,8 @@ alias python=python3
 alias pip=pip3
 alias nano=vim
 alias gs="git status"
-
+alias gf="git fetch"
+alias gt="git tpush"
 
 alias ll='ls -alF'
 alias la='ls -A'
