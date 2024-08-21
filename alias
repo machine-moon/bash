@@ -10,7 +10,7 @@ alias gf="git fetch"
 alias gt="git tpush"
 alias gp="git pull"
 # Docker
-alias dockerssh='docker exec -it $1 /bin/bash'
+alias tdocker='tdcker $1'
 
 # system
 alias ll='ls -alF'
