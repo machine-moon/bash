@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the hostname
+HOSTNAME=$(hostname)
+
+# Display the hostname in ASCII art
+figlet $HOSTNAME
+
+# Show additional system info
+echo "Server IP: $(hostname -I | awk '{print $1}')"
+echo "Logged in as: $USER"
+echo "Current date and time: $(date)"
+echo "System Load: $(uptime | awk -F'load average:' '{ print $2 }')"
+echo "Disk Usage: $(df -h / | grep / | awk '{ print $5 }')"
+echo "Memory Usage: $(free -h | grep Mem | awk '{print $3 " / " $2 }')"
+

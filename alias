@@ -1,10 +1,18 @@
+
+# QoL
 alias python=python3
 alias pip=pip3
 alias nano=vim
+alias tstart='source ~/.bashrc'
+# Git
 alias gs="git status"
 alias gf="git fetch"
 alias gt="git tpush"
 
+# Docker
+alias dockerssh='docker exec -it $1 /bin/bash'
+
+# system
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

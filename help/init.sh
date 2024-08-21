@@ -25,6 +25,12 @@ echo "$TEXT_TO_APPEND" >> ~/.bashrc
 # Optional: Inform the user
 echo "The function source_me has been appended to ~/.bashrc."
 
+echo "Installing dependencies."
+#tssh
+sudo apt install expect
+#ASCII text
+sudo apt install figlet
+
 clear
 source ~/.bashrc
 echo "t init complete"
