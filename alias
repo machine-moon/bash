@@ -8,7 +8,7 @@ alias tstart='source ~/.bashrc'
 alias gs="git status"
 alias gf="git fetch"
 alias gt="git tpush"
-
+alias gp="git pull"
 # Docker
 alias dockerssh='docker exec -it $1 /bin/bash'
 
