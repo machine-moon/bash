@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
-
+export HF_TOKEN=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
 WANDB_API_KEY=f0e24928c004a8d358791cfc9d634247dca8ea2e
 cd ~
