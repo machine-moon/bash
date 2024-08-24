@@ -3,7 +3,7 @@
 cd ~
 
 # Get the hostname
-HOSTNAME=(hostnamectl | grep 'Static hostname' | awk '{print $3}')
+HOSTNAME=$(hostnamectl | grep 'Static hostname' | awk '{print $3}')
 
 # Display the hostname in ASCII art
 figlet $HOSTNAME
