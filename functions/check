@@ -1,0 +1,10 @@
+#---------------------------------------------
+# Function to get a snap of a axis camera via wget
+#------------------------------------------------
+tcheck() {
+    local user="root"
+    local password="1234"
+    
+    wget --user="$user" --password="$password" http://10.10.1.69/axis-cgi/jpg/image.cgi -O server/check/office.jpg
+    wget --user="$user" --password="$password" http://10.10.1.65/axis-cgi/jpg/image.cgi -O server/check/garage.jpg
+}
