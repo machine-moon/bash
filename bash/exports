@@ -1,4 +1,4 @@
-
+#system exports, if every conflict, can open seperate branchs for machines
 export EDITOR=vim
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
@@ -6,8 +6,6 @@ export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
 export LS_COLORS='ow=01;34'
 
 
-#tsuite vars
-export ENABLE_GIT_BRANCH=0 #off for now, bugged.
 
 
 

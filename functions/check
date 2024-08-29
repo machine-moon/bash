@@ -1,10 +1,9 @@
 #---------------------------------------------
-# Function to get a snap of a axis camera via wget
+# Function to get a snapshot of an Axis camera via wget
 #------------------------------------------------
 tcheck() {
-    local user="root"
-    local password="1234"
-    
-    wget --user="$user" --password="$password" http://10.10.1.69/axis-cgi/jpg/image.cgi -O server/check/office.jpg
-    wget --user="$user" --password="$password" http://10.10.1.65/axis-cgi/jpg/image.cgi -O server/check/garage.jpg
+    #vars should be loaded with tload in ~/.bashrc
+    # Use environment variables
+    wget --user="$TSUITE_CHECK_USER" --password="$TSUITE_CHECK_PASSWORD" "http://${TSUITE_CHECK_ADDR1}/axis-cgi/jpg/image.cgi" -O "${TSUITE_CHECK_SAVE}/office.jpg"
+    wget --user="$TSUITE_CHECK_USER" --password="$TSUITE_CHECK_PASSWORD" "http://${TSUITE_CHECK_ADDR2}/axis-cgi/jpg/image.cgi" -O "${TSUITE_CHECK_SAVE}/garage.jpg"
 }
