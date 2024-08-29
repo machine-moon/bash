@@ -1,3 +1,6 @@
+#---------------------------------------------
+# Function to start a new bash session (use tstart instead)
+#------------------------------------------------
 function trestart {
     exec bash
 }

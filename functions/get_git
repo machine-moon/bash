@@ -1,5 +1,9 @@
+#---------------------------------------------
+# Functions to get and toggle the display of git branch inside $PS1
+#------------------------------------------------
 # Initialize ENABLE_GIT_BANCH
 # ENABLE_GIT_BRANCH=1  # Default to enabled || check exports folder for variables
+
 get_git_branch() {
   # Display the branch if ENABLE_GIT_BRANCH is 1
   if [ "$ENABLE_GIT_BRANCH" = "1" ]; then

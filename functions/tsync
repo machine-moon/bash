@@ -1,5 +1,6 @@
 #----------------------------------------------
-# Function to sync files to multiple hosts
+# Function to sync files to multiple hosts on difference machine via ssh
+# depreciated
 #-----------------------------------------------
 tsync() {
    tssh

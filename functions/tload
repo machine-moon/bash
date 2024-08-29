@@ -1,7 +1,7 @@
 #-----------------------------
-# Function to source bash dir
+# Function to be added to user ~/.bashrc
 #-----------------------------
-source_me() {
+tload() {
     local dir="$1"
     if [ -d "$dir" ]; then
         for file in "$dir"/*; do
@@ -13,5 +13,5 @@ source_me() {
     fi
 }
 
-# source_me "$HOME/bash"
-# source_me "$HOME/bash/functions"
+# source_me "$TSUITE_HOME/bash"
+# source_me "$TSUITE_HOME/functions"

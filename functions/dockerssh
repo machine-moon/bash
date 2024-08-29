@@ -1,3 +1,6 @@
+#---------------------------------------------
+# Function to enter a docker container using either ID or container-name
+#------------------------------------------------
 tdcker() {
     docker exec -it "$1" /bin/bash
 }

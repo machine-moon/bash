@@ -1,18 +1,23 @@
 
-# QoL
+# Some QoL alais
 alias python=python3
 alias pip=pip3
-alias nano=vim
-alias tstart='source ~/.bashrc'
+alias nano=vim # i hate nano
+alias tstart='source ~/.bashrc' 
+
 # Git
 alias gs="git status"
 alias gf="git fetch"
 alias gt="git tpush"
 alias gp="git pull"
+
 # Docker
-alias tdocker='tdcker $1'
+
+alias tdocker='tdcker $1' #check tdcker() or functions/dockershh
+
 alias updown='docker compose down && docker compose up -d'
-# system
+
+# system default
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
