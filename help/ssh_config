@@ -1,0 +1,104 @@
+############################################
+# GitHub configuration 
+Host github.com
+    HostName github.com
+    User git
+    Compression yes
+    IdentityFile ~/.ssh/id_github
+    IdentitiesOnly yes
+	
+############################################
+# CCDB
+
+# Graham
+Host graham
+    HostName graham.computecanada.ca
+    User t4r3k
+    IdentityFile ~/.ssh/id_login_ccdb
+    IdentitiesOnly yes
+
+# Cedar
+Host cedar
+    HostName cedar.computecanada.ca
+    User t4r3k
+    IdentityFile ~/.ssh/id_login_ccdb
+    IdentitiesOnly yes
+
+# Beluga
+Host beluga
+    HostName beluga.computecanada.ca
+    User t4r3k
+    IdentityFile ~/.ssh/id_login_ccdb
+    IdentitiesOnly yes
+
+# Narval
+Host narval
+    HostName narval.alliancecan.ca
+    User t4r3k
+    IdentityFile ~/.ssh/id_login_ccdb
+    IdentitiesOnly yes
+
+# Niagara
+Host niagara
+    HostName niagara.computecanada.ca
+    User t4r3k
+    IdentityFile ~/.ssh/id_login_ccdb
+    IdentitiesOnly yes
+############################################
+# Server
+
+# master
+Host master
+    HostName gehan.no-ip.org
+    User master
+    IdentityFile ~/.ssh/id_t3600
+    IdentitiesOnly yes
+    ForwardAgent yes
+	Port 6985
+	
+# titan
+Host server
+    HostName gehan.no-ip.org
+    User titan
+    IdentityFile ~/.ssh/id_t3600
+    ForwardAgent yes
+	Port 6985
+
+# dev
+Host dev
+    HostName gehan.no-ip.org
+    User dev
+    IdentityFile ~/.ssh/id_t3600
+    ForwardAgent yes
+	Port 6985
+
+############################################
+# Laptop
+
+# Home PC
+Host windows
+    HostName 10.10.1.45
+    User dev
+    IdentityFile ~/.ssh/id_homepc
+    IdentitiesOnly yes
+    ForwardAgent yes
+
+# WSL
+Host wsl
+    HostName 10.10.1.45
+    Port 2222
+    User candy
+    IdentityFile ~/.ssh/id_wsl
+    IdentitiesOnly yes
+    ForwardAgent yes
+	
+############################################
+# Chromebook
+
+# tchrome
+Host chrome
+    HostName 10.10.1.68
+    User orion
+    IdentityFile ~/.ssh/id_tchrome
+    IdentitiesOnly yes
+    ForwardAgent yes

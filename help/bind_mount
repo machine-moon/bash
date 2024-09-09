@@ -1,0 +1,2 @@
+sudo umount /path/to/mount
+sudo mount --bind /path/to/folder /path/to/dist_name
