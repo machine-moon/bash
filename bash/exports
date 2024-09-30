@@ -6,6 +6,11 @@ export PATH=/usr/local/cuda-12.5/bin${PATH:+:${PATH}}
 export LS_COLORS='ow=01;34'
 
 
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+
 
 
 
