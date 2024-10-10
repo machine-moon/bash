@@ -1,9 +1,9 @@
 
-sudo chown -R root:root /mnt/library
-sudo chmod -R 777 /mnt/library
+sudo chown -R root:root /mnt/server
+sudo chmod -R 777 /mnt/server
 
-sudo setfacl -R -m d:u::rwx /mnt/library
-sudo setfacl -R -m d:g::rwx /mnt/library
-sudo setfacl -R -m d:o::rwx /mnt/library
+sudo setfacl -R -m d:u::rwx /mnt/server
+sudo setfacl -R -m d:g::rwx /mnt/server
+sudo setfacl -R -m d:o::rwx /mnt/server
 
 

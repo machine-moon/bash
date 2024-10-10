@@ -1,0 +1,9 @@
+NAS Solutions for Ubuntu Server
+Samba (existing setup)
+Keywords: Samba, file sharing, SMB/CIFS, configuration, backup, migration
+OpenMediaVault
+Keywords: Debian-based, Docker, plugins, web interface, file systems (ext4, XFS, Btrfs), RAID, SMB/CIFS
+Rockstor
+Keywords: CentOS-based, Btrfs, Rock-ons (Docker support), snapshots, pooling, web UI, SMB/CIFS, installation, Docker compatibility
+FreeNAS (TrueNAS CORE)
+Keywords: FreeBSD-based, ZFS, advanced features, data integrity, plugins, web GUI, RAID, snapshots, SMB/CIFS
